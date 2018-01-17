@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"      
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <h:head>
+        <title>#{str.CarsformTitle}</title>
+    </h:head>
+
+    <h:body> 
+        <ui:composition template="/templates/template.xhtml">
+            <ui:define name="contenido">
+                <h2>#{str.carformHeader}</h2>
+                <p:fieldset legend="#{str.carlegendForm}">
+                    <b:form>
+                        <b:panelGrid columns="1">
+                            <b:inputText placeholder="#{str.carMarkPrompt}" 
+                                         value="#{carBean.car.mark}"></b:inputText>
+                            <b:inputText placeholder="#{str.carColorPrompt}" 
+                                         value="#{carBean.car.color}"></b:inputText>
+                                         <b:selectOneMenu value="#{carBean.car.person.idPerson}">
+                                             <f:selectItems value="#{carBean.persons}" var="p" 
+                                                            itemLabel="#{p.name}" itemValue="#{p.idPerson}"></f:selectItems>                                     
+                            </b:selectOneMenu>                                 
+                        </b:panelGrid>
+                        <b:commandButton value="#{str.buttonSave}" action="#{carBean.save()}"></b:commandButton>
+                        <b:commandButton value="#{str.buttonDelete}" action="#{carBean.delete()}"></b:commandButton>
+                        <b:commandButton value="#{str.buttonCancel}" action="#{carBean.cancel()}"></b:commandButton>
+                    </b:form>
+                </p:fieldset>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

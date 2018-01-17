@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>#{str.formHeader}</title>
+        <f:event 
+            listener="#{templateBean.checkLogin()}"
+            type="preRenderView">
+        </f:event>
+    </h:head>
+    <h:body>
+        <div id="pagina">
+            <div id="header">
+                <h1>#{str.systemTitle}</h1>
+            </div>
+            <div id="menu">
+                <h:form>
+                    <p:menubar>
+                        <p:menuitem value="Home" action="Inicio"></p:menuitem>
+                        <p:menuitem value="Users" action="#{userBean.list()}"></p:menuitem>
+                        <p:menuitem value="Roles" action="#{roleBean.list()}"></p:menuitem>
+                        <p:menuitem value="Persons" action="#{personBean.list()}"></p:menuitem>
+                        <p:menuitem value="Cars" action="#{carBean.list()}"></p:menuitem>
+                        <p:menuitem value="Articles" action="#{articleBean.list()}"></p:menuitem>
+                        <p:menuitem value="Orders" action="#{orderBean.list()}"></p:menuitem>
+                        <p:menuitem value="Credits" action="#{creditBean.list()}"></p:menuitem>
+                        <f:facet name="options">
+                            <p:commandButton value="Logout"
+                                action="#{userBean.logout()}"/>
+                        </f:facet>
+                    </p:menubar>
+                </h:form>
+            </div>
+            <div id="contenido">
+                <ui:insert name="contenido">
+                    <h2>#{str.systemWelcome}</h2>
+                </ui:insert>                
+            </div>
+            <div id="pie">
+                <p>
+                    <strong>#{str.developer}</strong>
+                    #{str.myName}
+                </p>
+            </div>
+        </div>
+    </h:body>
+</html>

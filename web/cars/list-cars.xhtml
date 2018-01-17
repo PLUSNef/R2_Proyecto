@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"      
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+
+        <h:head> 
+             <title>#{str.CarslistTitle}</title>
+        </h:head>
+
+        <h:body>
+            <ui:composition template="/templates/template.xhtml">
+                <ui:define name="contenido">
+                    <h1>#{str.CarslistTitle}</h1>
+                    <b:form>
+                        <b:commandButton value="#{str.buttonAdd}" action="#{carBean.start()}" look="primary"  style="width:200px"></b:commandButton>
+                    </b:form>
+                    <b:dataTable value="#{carBean.cars}" var="c">
+                        <b:dataTableColumn label="#{str.action}">
+                            <b:form>
+                                <b:commandButton value="#{str.buttonEdit}" action="#{carBean.edit(c)}"></b:commandButton>
+                            </b:form>
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="#{str.CarColorHeader}">
+                            <p:outputLabel value="#{c.color}"></p:outputLabel>
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="#{str.carMarkHeader}">
+                            <p:outputLabel value="#{c.mark}"></p:outputLabel>
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="#{str.personNameHeader}">
+                            <p:outputLabel value="#{c.person.name}"></p:outputLabel>
+                        </b:dataTableColumn>
+                    </b:dataTable>
+                </ui:define>
+            </ui:composition>
+        </h:body>
+</html>

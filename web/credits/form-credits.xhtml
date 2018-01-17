@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"     
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui"> 
+    <h:head>
+        <title>#{str.creditFormTitle}</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/template.xhtml">
+            <ui:define name="contenido">
+                <h2>#{str.creditFormHeader}</h2>
+                <p:fieldset legend="#{str.creditLegendForm}">
+                <b:form>
+                    <b:panelGrid columns="2">
+                        <b:inputText placeholder="#{str.creditCNPrompt}" value="#{creditBean.credit.creditnumber}"></b:inputText>
+                        <b:inputText placeholder="#{str.creditTrompt}" value="#{creditBean.credit.type}"></b:inputText>
+                        <b:inputText placeholder="#{str.creditEDPrompt}" value="#{creditBean.credit.expirationdate}"></b:inputText>
+                        <b:inputText placeholder="#{str.creditNPrompt}" value="#{creditBean.credit.name}"></b:inputText>
+                        <b:commandButton value="#{str.buttonSave}" action="#{creditBean.save()}"></b:commandButton>
+                        <b:commandButton value="#{str.buttonDelete}" action="#{creditBean.delete()}"></b:commandButton>
+                        <b:commandButton value="#{str.buttonCancel}" action="#{creditBean.cancel()}"></b:commandButton>
+                    </b:panelGrid>
+                </b:form>
+                </p:fieldset>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

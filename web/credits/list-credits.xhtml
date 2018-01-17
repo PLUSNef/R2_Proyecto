@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <title>#{str.creditListTitle}</title>
+    </h:head>
+
+    <h:body>
+        <ui:composition template="/templates/template.xhtml">
+            <ui:define name="contenido">
+                <h1>#{str.creditListTitle}</h1>
+                <b:form>
+                    <b:commandButton value="#{str.buttonAdd}" action="#{creditBean.start()}" look="primary"></b:commandButton>
+                </b:form>
+                <b:dataTable value="#{creditBean.credits}" var="c">
+                    <b:dataTableColumn label="#{str.action}">
+                        <b:form>
+                            <b:commandButton value="#{str.buttonEdit}" action="#{creditBean.edit(c)}"></b:commandButton>
+                        </b:form>
+                    </b:dataTableColumn>
+                    <b:dataTableColumn label="#{str.creditNCHeader}">
+                        <p:outputLabel value="#{c.creditnumber}"></p:outputLabel>
+                    </b:dataTableColumn>
+                    <b:dataTableColumn label="#{str.creditTHeader}">
+                        <p:outputLabel value="#{c.type}"></p:outputLabel>
+                    </b:dataTableColumn>
+                     <b:dataTableColumn label="#{str.creditEDHeader}">
+                        <p:outputLabel value="#{c.expirationdate}"></p:outputLabel>
+                    </b:dataTableColumn>
+                     <b:dataTableColumn label="#{str.creditNHeader}">
+                        <p:outputLabel value="#{c.name}"></p:outputLabel>
+                    </b:dataTableColumn>
+                </b:dataTable>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
